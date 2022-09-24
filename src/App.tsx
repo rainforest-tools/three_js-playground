@@ -1,15 +1,17 @@
-import { Canvas } from '@react-three/fiber';
-import Box from './components/box';
+import { Route, Routes } from 'react-router-dom';
+import Home from '~/pages';
+import Threejs from '~/layouts/threejs';
+import Mountains from '~/pages/mountains';
 
-function App() {
+const App = () => {
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
-    </Canvas>
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path='threejs' element={<Threejs />}>
+        <Route path='mountains' element={<Mountains />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;
